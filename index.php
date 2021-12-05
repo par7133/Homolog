@@ -53,7 +53,7 @@
    
    $signHistoryCopy = $signHistory;
    
-   sort($signHistoryCopy);
+   rsort($signHistoryCopy);
 
    $m = 1;
    foreach($signHistoryCopy as $val) {

@@ -65,6 +65,8 @@
      
      $ipos2=mb_strripos($val, "|");
      $mydesc = substr($val, $ipos+1, (($ipos2 - $ipos) - 1));
+    
+     $mydesc = enableLinks($mydesc);
      
      $aflag = substr($val, $ipos2+1, 1);
 

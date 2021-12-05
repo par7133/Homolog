@@ -1,0 +1,113 @@
+<?php
+
+/**
+ * Copyright 2021, 2024 5 Mode
+ *
+ * This file is part of Homolog.
+ *
+ * Homolog is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Homolog is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.  
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with Homolog. If not, see <https://www.gnu.org/licenses/>.
+ *
+ * config.inc
+ * 
+ * Homolog configuration settings.
+ *
+ * @author Daniele Bonini <my25mb@aol.com>
+ * @copyrights (c) 2021, 2024, 5 Mode     
+ */
+
+define('DEBUG', true);
+ 
+define('APP_NAME', "Homolog");
+
+define('APP_TITLE', "Homolog");
+define('APP_DESCRIPTION', "Welcome to Homolog! Let everyone log their own stuff.");
+define('APP_KEYWORDS', "event,logger,list,calendar,on,premise,solution");
+
+// password: yourpassword
+// salt: yoursalt
+define('APP_HASH', "");
+
+define('APP_SPLASH', true);
+
+define('APP_PATH', "/var/www/YourWebApp");
+define('APP_DATA_PATH', "/var/www/YourWebApp/data");
+define('APP_SALT', "yoursalt");
+// Default Locale, in two letters format
+define('APP_LOCALE', "EN");
+define('APP_CUSTOM_HEADER', "&nbsp;&nbsp;<a href='http://5mode.com'><img src='/ACT_res/5mode.png' style='width:950px;'></a>");
+// App uses: PRIVATE or BUSINESS
+define('APP_USE', "PRIVATE");
+// App context: CALENDAR or EVENTS
+define('APP_CONTEXT', "CALENDAR");
+define('APP_GUEST_MSG', "This is a private event list, please login");
+define('APP_WELCOME_MSG', "Welcome to your event list:");
+// Max signs from a single client
+define('APP_MAX_FROM_IP', 5);
+// Default Context: 'PRIVATE' or 'PUBLIC'
+define('APP_DEFAULT_CONTEXT', "PRIVATE");
+
+define('DISPLAY_DATE_FONT', "Yuji Boku");
+define('DISPLAY_SUBMIT_BUTTON', "Log event");
+define('DISPLAY_BODY_CSS', "font-family: Monospace, Verdana, Serif;");
+
+define('CMDLINE_VALIDCMDS', "~|sign|del|conf|refresh|");
+
+define('HISTORY_MAX_ITEMS', 1000);
+
+$CONFIG = [
+
+   'DEBUG' => true,
+
+   'APP' => [
+      'NAME' => "Homolog",
+      'TITLE' => "Homolog",
+      'APP_DESCRIPTION' => "Welcome to Homolog! Let everyone log their own stuff.",
+      'APP_KEYWORDS' => "event,logger,list,calendar,on,premise,solution",
+      // password: yourpassword
+      // salt: yoursalt
+      'HASH' => "",  
+      'SPLASH' => true,
+      'PATH' => "/var/www/YourWebApp",
+      'DATA_PATH' => "/var/www/YourWebApp/data",
+      'SALT' => "yoursalt",
+      // Default Locale, in two letters format
+      'LOCALE' => "EN",
+      'CUSTOM_HEADER' => "&nbsp;&nbsp;<a href='http://5mode.com'><img src='/ACT_res/5mode.png' style='width:950px;'></a>",
+      // App use: PRIVATE or BUSINESS
+      'USE' => "PRIVATE",
+      // App use: CALENDAR or EVENTS
+      'CONTEXT' => "SUPPORT",
+      'GUEST_MSG' => "This is a private event list, please login",
+      'WELCOME_MSG' => "Welcome to your event list:",
+      // Max signs from a single client
+      'APP_MAX_FROM_IP' =>  5,
+      // Default Context: 'PRIVATE' or 'PUBLIC'
+      'DEFAULT_CONTEXT' => "PRIVATE"
+      ],
+    
+    'DISPLAY' => [
+      'NAME_FONT' => "Yuji Boku",
+      'SUBMIT_BUTTON' => "Log event",
+      'BODY_CSS' => "font-family: Monospace, Verdana, Serif;"
+      ],
+     
+    'CMDLINE' => [
+       'VALIDCMDS' => "~|sign|del|conf|refresh|"  
+      ],    
+      
+    'HISTORY' => [
+     'MAX_ITEMS' => 1000
+      ]  
+    ];  
+

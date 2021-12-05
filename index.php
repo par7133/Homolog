@@ -277,18 +277,19 @@
   
   $rescaptcha1=$captchacount>=4;
   $rescaptcha2=count(array_filter($captchaHistory, "odd")) > (APP_MAX_FROM_IP - 1);
-  if ($rescaptcha1) {
-    echo("WARNING: captcha expired #1<br>");
-  }  
+  //if ($rescaptcha1) {
+  //  echo("WARNING: captcha expired #1<br>");
+  //}  
   
   //if ($rescaptcha2) {
   //  echo("WARNING: captcha expired #2<br>");
   //}  
   
-  //if ($rescaptcha1 || $rescaptcha2) {
-  if ($rescaptcha1) {
-    return false;
-  }  
+  ///if ($rescaptcha1 || $rescaptcha2) {
+  
+  //if ($rescaptcha1) {
+  //  return false;
+  //}  
   
   return true;
  } 

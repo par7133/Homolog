@@ -1,5 +1,5 @@
 # Homolog
-Let's everyone log calendar or events  
+Let's everyone log calendar and events  
   
 Hello and welcome to Homolog!  
   

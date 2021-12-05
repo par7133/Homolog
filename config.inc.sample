@@ -72,8 +72,8 @@ $CONFIG = [
    'APP' => [
       'NAME' => "Homolog",
       'TITLE' => "Homolog",
-      'APP_DESCRIPTION' => "Welcome to Homolog! Let everyone log their own stuff.",
-      'APP_KEYWORDS' => "event,logger,list,calendar,on,premise,solution",
+      'DESCRIPTION' => "Welcome to Homolog! Let everyone log their own stuff.",
+      'KEYWORDS' => "event,logger,list,calendar,on,premise,solution",
       // password: yourpassword
       // salt: yoursalt
       'HASH' => "",  
@@ -91,7 +91,7 @@ $CONFIG = [
       'GUEST_MSG' => "This is a private event list, please login",
       'WELCOME_MSG' => "Welcome to your event list:",
       // Max signs from a single client
-      'APP_MAX_FROM_IP' =>  5,
+      'MAX_FROM_IP' =>  5,
       // Default Context: 'PRIVATE' or 'PUBLIC'
       'DEFAULT_CONTEXT' => "PRIVATE"
       ],

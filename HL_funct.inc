@@ -165,7 +165,7 @@ function HTMLencodeF(?string $s, bool $withBR = false): string
     return PHP_STR;
   }
   
-  $s = preg_replace("/[^A-Za-z0-9-_\:\/\. ]/", "", $s);
+  $s = preg_replace("/[^A-Za-z0-9-_\:\/\.\,\?\=\&\# ]/", "", $s);
   
   $s = str_ireplace("&#39;", "'", $s); 
   $s = str_ireplace("&#34;", "\"", $s);

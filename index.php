@@ -721,7 +721,7 @@
         
         <br>
         
-        <input type="text" id="date" name="date" placeholder="Date" value="<?php echo(date("Y-m-d"));?>" style="width:170px;color:#000000;">&nbsp;<input type="text" id="desc" name="desc" placeholder="Description" style="width:36%;max-width:430px;color:#000000;" maxlength="300"><br>
+        <input type="text" id="date" name="date" placeholder="Date" value="<?php echo(date("Y-m-d"));?>" style="min-width:170px;max-width:250px;width:25%;color:#000000;">&nbsp;<input type="text" id="desc" name="desc" placeholder="Description" style="width:55%;max-width:630px;color:#000000;" maxlength="300"><br>
         
         <input type="button" id="send" name="send" value="&nbsp;<?php echo(DISPLAY_SUBMIT_BUTTON);?>&nbsp;" title="<?php echo(DISPLAY_SUBMIT_BUTTON);?>" style="position:relative;top:+28px;margin-top:25px;height:50px;background-color:red;border:1px solid black;color:white;font-size:medium;">
         
@@ -755,7 +755,7 @@
         
         <br>
         
-        <input type="text" id="date" name="date" placeholder="Date" value="<?php echo(date("Y-m-d"));?>" style="width:170px">&nbsp;<input type="text" id="desc" name="desc" placeholder="Description" style="width:36%;max-width:430px;" maxlength="300"><br>
+        <input type="text" id="date" name="date" placeholder="Date" value="<?php echo(date("Y-m-d"));?>" style="min-width:170px;max-width:250px;width:25%;color:#000000;">&nbsp;<input type="text" id="desc" name="desc" placeholder="Description" style="width:55%;max-width:630px;color:#000000;" maxlength="300"><br>
         
         <input type="button" id="send" name="send" value="&nbsp;<?php echo(DISPLAY_SUBMIT_BUTTON);?>&nbsp;" title="<?php echo(DISPLAY_SUBMIT_BUTTON);?>" style="position:relative;top:+28px;margin-top:25px;height:50px;background-color:red;border:1px solid black;color:white;font-size:medium;">
         

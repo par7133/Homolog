@@ -651,11 +651,11 @@
     </button>
     
     <br><br>
-    <img src="/HL_res/HLgenius.png" alt="HL Genius" title="HL Genius" style="position:relative; left:+6px; width:90%; border: 1px dashed #EEEEEE;">
+    <img src="/HL_res/HLgenius.png" alt="HL Genius" title="HL Genius" style="position:relative; left:+1px; width:90%; border: 1px dashed #EEEEEE;">
     &nbsp;<br><br>
     <div style="text-align:left;white-space:nowrap;">
-    &nbsp;&nbsp;<input type="password" id="Password" name="Password" placeholder="password" style="font-size:13px; background:#393939; color:#ffffff; width: 60%; border-radius:3px;" value="<?php echo($password);?>" autocomplete="off">&nbsp;<input type="submit" value="<?php echo(getResource("Go", $curLocale));?>" style="text-align:left;width:25%;color:#000000;"><br>
-    &nbsp;&nbsp;<input type="text" id="Salt" placeholder="salt" style="position:relative; top:+5px; font-size:13px; background:#393939; color:#ffffff; width: 90%; border-radius:3px;" autocomplete="off"><br>
+    &nbsp;<input type="password" id="Password" name="Password" class="sidebarcontrol" placeholder="password" style="font-size:13px; width: 60%; border-radius:3px;" value="<?php echo($password);?>" autocomplete="off">&nbsp;<input type="submit" class="sidebarcontrol" value="<?php echo(getResource("Go", $curLocale));?>" style="width:24%; height: 25px;background-color:lightgray;color:#000000;"><br>
+    &nbsp;<input type="text" id="Salt" class="sidebarcontrol" placeholder="salt" style="position:relative; top:+5px; font-size:13px; width: 90%; border-radius:3px;" autocomplete="off"><br>
     <div style="text-align:center;">
     <a href="#" onclick="showEncodedPassword();" style="position:relative; left:-2px; top:+5px; color:#000000; font-size:12px;"><?php echo(getResource("Hash Me", $curLocale));?>!</a>     
     
@@ -721,7 +721,7 @@
         
         <br>
         
-        <input type="text" id="date" name="date" placeholder="Date" value="<?php echo(date("Y-m-d"));?>" style="min-width:170px;max-width:250px;width:25%;color:#000000;">&nbsp;<input type="text" id="desc" name="desc" placeholder="Description" style="width:55%;max-width:630px;color:#000000;" maxlength="300"><br>
+        <input type="text" id="date" name="date" class="standardcontrol" placeholder="Date" value="<?php echo(date("Y-m-d"));?>" style="min-width:170px;max-width:250px;width:25%;">&nbsp;<input type="text" id="desc" name="desc" class="standardfield" placeholder="Description" style="width:55%;max-width:630px;" maxlength="300"><br>
         
         <input type="button" id="send" name="send" value="&nbsp;<?php echo(DISPLAY_SUBMIT_BUTTON);?>&nbsp;" title="<?php echo(DISPLAY_SUBMIT_BUTTON);?>" style="position:relative;top:+28px;margin-top:25px;height:50px;background-color:red;border:1px solid black;color:white;font-size:medium;">
         
@@ -755,7 +755,7 @@
         
         <br>
         
-        <input type="text" id="date" name="date" placeholder="Date" value="<?php echo(date("Y-m-d"));?>" style="min-width:170px;max-width:250px;width:25%;color:#000000;">&nbsp;<input type="text" id="desc" name="desc" placeholder="Description" style="width:55%;max-width:630px;color:#000000;" maxlength="300"><br>
+        <input type="text" id="date" name="date" class="standardcontrol" placeholder="Date" value="<?php echo(date("Y-m-d"));?>" style="min-width:170px;max-width:250px;width:25%;">&nbsp;<input type="text" id="desc" name="desc" class="standardcontrol" placeholder="Description" style="width:55%;max-width:630px;" maxlength="300"><br>
         
         <input type="button" id="send" name="send" value="&nbsp;<?php echo(DISPLAY_SUBMIT_BUTTON);?>&nbsp;" title="<?php echo(DISPLAY_SUBMIT_BUTTON);?>" style="position:relative;top:+28px;margin-top:25px;height:50px;background-color:red;border:1px solid black;color:white;font-size:medium;">
         

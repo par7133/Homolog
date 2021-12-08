@@ -35,9 +35,16 @@ body {
   background-color: #FFFFFF;
   color: #000000;
 }
-.standardfield{
-  border: 0px;
-  border-bottom: 1px dashed #EEEEEE;
+.sidebarcontrol{
+  background:#393939; 
+  color:#ffffff;
+  font-family: Verdana, Arial, Helvetica Neue, Helbetica;
+}
+.standardcontrol{
+/*  border: 0px;
+  border-bottom: 1px dashed #EEEEEE;*/
+  color: #000000;
+  font-family: Verdana, Arial, Helvetica Neue, Helbetica;
 }
 .emptyfield{
   border: 1px solid red;

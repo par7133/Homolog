@@ -83,7 +83,7 @@
        // Display event list   
        echo("<table style='width:75%; border:0;' align='center'>");
        echo("<tr>");
-       echo("<td style='width:24%; text-align:left; vertical-align:top; padding-top:2px; padding-left:8px;'>");
+       echo("<td style='width:24%; text-align:left; vertical-align:top; padding-top:2px; padding-left:8px; white-space:nowrap;'>");
        echo("<span style='font-family:".DISPLAY_DATE_FONT.";font-size:22px; font-weight:900;'>".$mydate."</span>");
        echo("</td>");
        echo("<td style='width:66%; text-align:left; vertical-align:top; padding-top:5px; padding-left:15px; font-size:18px;'>");
@@ -103,7 +103,7 @@
          // Display event list
          echo("<table style='width:75%; border:0;' align='center'>");
          echo("<tr>");
-         echo("<td style='width:24%; text-align:left; vertical-align:top; padding-top:2px; padding-left:8px;'>");
+         echo("<td style='width:24%; text-align:left; vertical-align:top; padding-top:2px; padding-left:8px; white-space:nowrap;'>");
          echo("<span style='font-family:".DISPLAY_DATE_FONT.";font-size:22px; font-weight:900;'>".$mydate."</span>");
          echo("</td>");
          echo("<td style='width:76%; text-align:left; vertical-align:top; padding-top:5px; padding-left:15px; font-size:18px;'>");

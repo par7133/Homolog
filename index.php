@@ -623,7 +623,7 @@
 
 <?php if(APP_USE === "PRIVATE"): ?>
 <div class="header" style="background-color:#ffffff;z-index:90;">
-   <a id="burger-menu" href="#" style="display:none;"><img src="/HL_res/burger-menu2.png" style="width:58px;"></a><a id="ahome" href="http://homolog.org" target="_blank" style="color:black; text-decoration: none;"><img id="logo-hmm" src="/HL_res/HLlogo.png" style="width:48px;">&nbsp;Homolog</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a id="agithub" href="https://github.com/par7133/Homolog" style="color:#000000"><span style="color:#119fe2">on</span> github</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a id="afeedback" href="mailto:info@homolog.org" style="color:#000000"><span style="color:#119fe2">for</span> feedback</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a id="asupport" href="tel:+39-331-4029415" style="font-size:13px;background-color:#15c60b;border:2px solid #15c60b;color:black;height:27px;text-decoration:none;">&nbsp;&nbsp;get support&nbsp;&nbsp;</a><div id="pwd2" style="float:right;position:relative;top:+13px;display:none"><input type="password" id="Password2" name="Password2" placeholder="password" style="font-size:13px; background:#393939; color:#ffffff; width: 125px; border-radius:3px;" value="" autocomplete="off"></div>
+   <a id="burger-menu" href="#" style="display:none;"><img src="/HL_res/burger-menu2.png" style="width:58px;"></a><a id="ahome" href="http://homolog.5mode.com" target="_blank" style="color:black; text-decoration: none;"><img id="logo-hmm" src="/HL_res/HLlogo.png" style="width:48px;">&nbsp;Homolog</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a id="agithub" href="https://github.com/par7133/Homolog" style="color:#000000"><span style="color:#119fe2">on</span> github</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a id="afeedback" href="mailto:my25mb@aol.com" style="color:#000000"><span style="color:#119fe2">for</span> feedback</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a id="asupport" href="tel:+39-331-4029415" style="font-size:13px;background-color:#15c60b;border:2px solid #15c60b;color:black;height:27px;text-decoration:none;">&nbsp;&nbsp;get support&nbsp;&nbsp;</a><div id="pwd2" style="float:right;position:relative;top:+13px;display:none"><input type="password" id="Password2" name="Password2" placeholder="password" style="font-size:13px; background:#393939; color:#ffffff; width: 125px; border-radius:3px;" value="" autocomplete="off"></div>
 </div>
 <?php else: ?>
 <div class="header2" style="margin:0;padding:0;border-bottom:0px;text-align:center;">
@@ -775,7 +775,7 @@
 
     <?php if(APP_USE === "BUSINESS"): ?>    
     <div style="font-size:23px">
-      <a id="ahome" href="http://homolog.org" target="_blank" style="color:black;"><img id="logo-hl" src="/HL_res/HLlogo.png" style="position:relative;top:-25px;width:48px;margin:5px;">Powered by Homolog</a>
+      <a id="ahome" href="http://homolog.5mode.com" target="_blank" style="color:black;"><img id="logo-hl" src="/HL_res/HLlogo.png" style="position:relative;top:-25px;width:48px;margin:5px;">Powered by Homolog</a>
     </div>
     <?php endif; ?>&nbsp;
        

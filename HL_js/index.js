@@ -155,7 +155,7 @@ function setContentPos() {
     //$("#contentbar").css("width","100%");
     $("#logo-hl").css("display","none");
   } else {  
-    $("#ahome").attr("href","http://homolog.org");
+    $("#ahome").attr("href","http://homolog.5mode.com");
     $("#agithub").css("display","inline");
     $("#afeedback").css("display","inline");
     $("#asupport").css("display","inline");  

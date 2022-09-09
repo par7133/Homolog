@@ -22,7 +22,7 @@ As you are going to run Homolog in the PHP process context, using a limited web 
 </ul>
 </ol>
    
-Hope you can enjoy it and let us know about any feedback: <a href="mailto:info@homolog.org" style="color:#e6d236;">info@homolog.org</a>
+Hope you can enjoy it and let us know about any feedback: <a href="mailto:my25mb@aol.com" style="color:#e6d236;">my25mb@aol.com</a>
   	   
 ## Screenshots  
 	   

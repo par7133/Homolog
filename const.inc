@@ -94,10 +94,15 @@ if (!defined("PHP_UPLOAD_ERR_EXTENSION")) {
 }
 
 //APP
+if (!defined("EVENTS_MODE_TYPE")) {
+  define('EVENTS_MODE_TYPE', 0);
+}
+if (!defined("CALENDAR_MODE_TYPE")) {
+  define('CALENDAR_MODE_TYPE', 1);
+}
 if (!defined("PUBLIC_CONTEXT_TYPE")) {
   define('PUBLIC_CONTEXT_TYPE', 0);
 }
-
 if (!defined("PERSONAL_CONTEXT_TYPE")) {
   define('PERSONAL_CONTEXT_TYPE', 1);
 }

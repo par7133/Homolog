@@ -29,7 +29,7 @@
  require "init.inc";
  
  $contextType = PUBLIC_CONTEXT_TYPE;
- 
+  
  $signHistory = [];
  $cmd = PHP_STR;
  $opt = PHP_STR;
@@ -60,32 +60,48 @@
      
      $val = rtrim($val, "\n");
      
-     $ipos=mb_stripos($val, "|");
-     $mydate = left($val,$ipos);
+     $mydate = PHP_STR; 
+     $mytime = PHP_STR;
+     $mydesc = PHP_STR;
+     $myflag = PHP_STR;
      
-     $ipos2=mb_strripos($val, "|");
-     $mydesc = substr($val, $ipos+1, (($ipos2 - $ipos) - 1));
-    
-     $mydesc = enableLinks($mydesc);
+     $aFields = explode(PHP_PIPE, $val);
+     if (APP_MODE == CALENDAR_MODE_TYPE) {
+       $mydate = $aFields[0]; 
+       $mytime = $aFields[1];
+       $mydesc = $aFields[2];
+       $myflag = $aFields[3];
+     } else {
+       $mydate = $aFields[0]; 
+       $mydesc = $aFields[1];
+       $myflag = $aFields[2];
+     }
      
-     $aflag = substr($val, $ipos2+1, 1);
-
+     if ($mydate==PHP_STR && $mydesc==PHP_STR) {
+       continue;
+     }
+     
      // If I'm in admin
      if ($contextType === PERSONAL_CONTEXT_TYPE) {
        
        $adminFnc = PHP_STR;
-       if ($aflag === "u") {
+       if ($myflag === "u") {
          $adminFnc = "<a href='#' onclick=\"confSign('" . $val . "')\"><img src='/HL_res/confirm.png' style='width:36px;'></a>";
        } else {
          $adminFnc = "<a href='#' onclick=\"delSign('" . $val . "')\"><img src='/HL_res/del.png' style='width:36px;'></a>";
        }    
      
-       // Display event list   
+       // Display event/calendar list   
        echo("<table style='width:75%; border:0;' align='center'>");
        echo("<tr>");
-       echo("<td style='width:24%; text-align:left; vertical-align:top; padding-top:2px; padding-left:8px; white-space:nowrap;'>");
+       echo("<td style='width:14%; text-align:left; vertical-align:top; padding-top:2px; padding-left:8px; white-space:nowrap;'>");
        echo("<span style='font-family:".DISPLAY_DATE_FONT.";font-size:22px; font-weight:900;'>".$mydate."</span>");
        echo("</td>");
+       if (APP_MODE == CALENDAR_MODE_TYPE) {
+         echo("<td style='width:10%; text-align:left; vertical-align:top; padding-top:2px; padding-left:8px; white-space:nowrap;'>");
+         echo("<span style='font-family:".DISPLAY_DATE_FONT.";font-size:22px; font-weight:900;'>".$mytime."</span>");
+         echo("</td>");
+       }
        echo("<td style='width:66%; text-align:left; vertical-align:top; padding-top:5px; padding-left:15px; font-size:18px;'>");
        echo($mydesc);
        echo("</td>");
@@ -98,14 +114,19 @@
      // If I'm not in admin
      } else {   
        
-       if ($aflag !== "u") {
+       if ($myflag !== "u") {
 
          // Display event list
          echo("<table style='width:75%; border:0;' align='center'>");
          echo("<tr>");
-         echo("<td style='width:24%; text-align:left; vertical-align:top; padding-top:2px; padding-left:8px; white-space:nowrap;'>");
+         echo("<td style='width:14%; text-align:left; vertical-align:top; padding-top:2px; padding-left:8px; white-space:nowrap;'>");
          echo("<span style='font-family:".DISPLAY_DATE_FONT.";font-size:22px; font-weight:900;'>".$mydate."</span>");
          echo("</td>");
+         if (APP_MODE == CALENDAR_MODE_TYPE) {
+           echo("<td style='width10%; text-align:left; vertical-align:top; padding-top:2px; padding-left:8px; white-space:nowrap;'>");
+           echo("<span style='font-family:".DISPLAY_DATE_FONT.";font-size:22px; font-weight:900;'>".$mytime."</span>");
+           echo("</td>");
+         }
          echo("<td style='width:76%; text-align:left; vertical-align:top; padding-top:5px; padding-left:15px; font-size:18px;'>");
          echo($mydesc);
          echo("</td>");
@@ -237,6 +258,8 @@
 	global $param2; 
 	global $param3; 
   global $date;
+  global $hour;
+  global $min;
   global $desc;
   global $captchacount; 
   global $captchasign;
@@ -269,6 +292,17 @@
     return false;
   }  
 
+  if (APP_MODE == CALENDAR_MODE_TYPE) {
+    if ($hour===PHP_STR || strlen($hour)>2) {
+      //echo("WARNING: invalid hour<br>");
+      return false;
+    }  
+    if ($min===PHP_STR || strlen($min)>2) {
+      //echo("WARNING: invalid min<br>");
+      return false;
+    }  
+  }
+  
   //place!=""
   if ($desc===PHP_STR || strlen($desc)<4) {
     //echo("WARNING: invalid desc<br>");
@@ -306,6 +340,8 @@
  function myExecSignCommand() {
    
    global $date;
+   global $hour;
+   global $min;
    global $desc;
    global $curPath;
    global $lastMessage;
@@ -313,8 +349,12 @@
    global $captchasign;
    global $captchaHistory;
    
-   $newSign = HTMLencodeF($date,false) . "|" . HTMLencodeF($desc,false) . "|u";
-
+   if (APP_MODE == EVENTS_MODE_TYPE) {
+     $newSign = HTMLencodeF($date,false) . "|" . HTMLencodeF($desc,false) . "|u";
+   } else {  
+     $newSign = HTMLencodeF($date,false) . "|" . HTMLencodeF($hour.":".((strlen($min)==1)?"0".$min:$min)) . "|" . HTMLencodeF($desc,false) . "|u";
+   }
+   
    //echo("array_filter=".count(array_filter($captchaHistory, "odd"))."<br>");
    //echo("new_sign?=".((hash("sha256", $newSign . APP_SALT, false) !== $lastMessage)?"true":"false")."<br>");
 
@@ -490,6 +530,8 @@
  $hideHCSplash = filter_input(INPUT_POST, "hideHCSplash");
 
  $date = filter_input(INPUT_POST, "date");
+ $hour = filter_input(INPUT_POST, "hour");
+ $min = filter_input(INPUT_POST, "min");
  $desc = filter_input(INPUT_POST, "desc");
 
  $captchasign = hash("sha256", $_SERVER["REMOTE_ADDR"] . date("Y") . APP_SALT, false);
@@ -610,7 +652,7 @@
   <script src="/HL_js/index.js" type="text/javascript" defer></script>
   
   <link href="/HL_css/bootstrap.min.css" type="text/css" rel="stylesheet">
-  <link href="/HL_css/style.css" type="text/css" rel="stylesheet">
+  <link href="/HL_css/style.css?r=<?PHP echo(time());?>" type="text/css" rel="stylesheet">
   
 <style>
 @import url('https://fonts.googleapis.com/css2?family=<?php echo(str_ireplace(" ","+",DISPLAY_DATE_FONT));?>');
@@ -691,7 +733,7 @@
 	   <li>In the data path create a ".HL_history" and ".HL_captchahistory" files and give them the write permission.</li>
      <li>Finish to setup the configuration file apporpriately, in the specific:</li>
      <ul>
-       <li>Configure the APP_USE and APP_CONTEXT appropriately.</li>
+       <li>Configure the APP_USE and APP_MODE appropriately.</li>
        <li>Configure the DISPLAY attributes as required.</li>
        <li>Configure the max history items as required (default: 1000).</li>	      
 	   </ul>
@@ -721,9 +763,29 @@
         
         <br>
         
+        <?PHP if (APP_MODE == EVENTS_MODE_TYPE): ?>
+        
         <input type="text" id="date" name="date" class="standardcontrol" placeholder="Date" value="<?php echo(date("Y-m-d"));?>" style="min-width:170px;max-width:250px;width:25%;">&nbsp;<input type="text" id="desc" name="desc" class="standardfield" placeholder="Description" style="width:55%;max-width:630px;" maxlength="300"><br>
         
         <input type="button" id="send" name="send" value="&nbsp;<?php echo(DISPLAY_SUBMIT_BUTTON);?>&nbsp;" title="<?php echo(DISPLAY_SUBMIT_BUTTON);?>" style="position:relative;top:+28px;margin-top:25px;height:50px;background-color:red;border:1px solid black;color:white;font-size:medium;">
+        
+        <?PHP else: ?>
+        
+        <input type="text" id="date" name="date" class="standardfield standardcontrol" placeholder="Date" value="<?php echo(date("Y-m-d"));?>" style="min-width:100px;max-width:170px;width:20%;">&nbsp;
+        <select id="hour" name="hour" class="standardfield standardcontrol" style="background-color:#FFFFFF;">
+        <?PHP for($i=0;$i<=24;$i++):?>
+          <option value="<?PHP echo($i);?>" <?PHP echo(($i==date("G"))?"selected":"")?>><?PHP echo((strlen($i)===1)?"0".$i:$i);?></option>
+        <?PHP endfor; ?>
+        </select>:<select id="min" name="min" class="standardfield standardcontrol" style="background-color:#FFFFFF;">
+        <?PHP for($i=0;$i<=59;$i++):?>
+          <option value="<?PHP echo($i);?>" <?PHP echo(($i==ltrim(date("i"),'0'))?"selected":"");?>><?PHP echo((strlen($i)===1)?"0".$i:$i);?></option>
+        <?PHP endfor; ?>
+        </select>&nbsp;
+        <input type="text" id="desc" name="desc" class="standardfield standardcontrol" placeholder="Description" style="width:45%;max-width:530px;" maxlength="300"><br>
+        
+        <input type="button" id="send" name="send" value="&nbsp;<?php echo(DISPLAY_SUBMIT_BUTTON);?>&nbsp;" title="<?php echo(DISPLAY_SUBMIT_BUTTON);?>" style="position:relative;top:+28px;margin-top:25px;height:50px;background-color:red;border:1px solid black;color:white;font-size:medium;">
+        
+        <?PHP Endif; ?>
         
         <br><br>
         
@@ -754,10 +816,31 @@
         <div style="font-size:23px;margin-bottom:23px;font-weight:900;"><h1><?php echo(APP_WELCOME_MSG??"&nbsp;"); ?></h1></div>
         
         <br>
+
+        <?PHP if (APP_MODE == EVENTS_MODE_TYPE): ?>
         
         <input type="text" id="date" name="date" class="standardcontrol" placeholder="Date" value="<?php echo(date("Y-m-d"));?>" style="min-width:170px;max-width:250px;width:25%;">&nbsp;<input type="text" id="desc" name="desc" class="standardcontrol" placeholder="Description" style="width:55%;max-width:630px;" maxlength="300"><br>
         
         <input type="button" id="send" name="send" value="&nbsp;<?php echo(DISPLAY_SUBMIT_BUTTON);?>&nbsp;" title="<?php echo(DISPLAY_SUBMIT_BUTTON);?>" style="position:relative;top:+28px;margin-top:25px;height:50px;background-color:red;border:1px solid black;color:white;font-size:medium;">
+
+        <?PHP else: ?>
+        
+        <input type="text" id="date" name="date" class="standardfield standardcontrol" placeholder="Date" value="<?php echo(date("Y-m-d"));?>" style="min-width:100px;max-width:170px;width:20%;">&nbsp;
+        <select id="hour" name="hour" class="standardfield standardcontrol" style="background-color:#FFFFFF;">
+        <?PHP for($i=0;$i<=24;$i++):?>
+          <option value="<?PHP echo($i);?>" <?PHP echo(($i==date("G"))?"selected":"")?>><?PHP echo((strlen($i)===1)?"0".$i:$i);?></option>
+        <?PHP endfor; ?>
+        </select>:<select id="min" name="min" class="standardfield standardcontrol" style="background-color:#FFFFFF;">
+        <?PHP for($i=0;$i<=59;$i++):?>
+          <option value="<?PHP echo($i);?>" <?PHP echo(($i==ltrim(date("i"),'0'))?"selected":"")?>><?PHP echo((strlen($i)===1)?"0".$i:$i);?></option>
+        <?PHP endfor; ?>
+        </select> &nbsp;
+        <input type="text" id="desc" name="desc" class="standardfield standardcontrol" placeholder="Description" style="width:45%;max-width:530px;" maxlength="300"><br>
+        
+        <input type="button" id="send" name="send" value="&nbsp;<?php echo(DISPLAY_SUBMIT_BUTTON);?>&nbsp;" title="<?php echo(DISPLAY_SUBMIT_BUTTON);?>" style="position:relative;top:+28px;margin-top:25px;height:50px;background-color:red;border:1px solid black;color:white;font-size:medium;">
+        
+        <?PHP Endif; ?>
+
         
         <br><br>
         

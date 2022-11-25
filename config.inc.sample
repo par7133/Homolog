@@ -48,14 +48,14 @@ define('APP_LOCALE', "EN");
 define('APP_CUSTOM_HEADER', "&nbsp;&nbsp;<a href='http://5mode.com'><img src='/ACT_res/5mode.png' style='width:950px;'></a>");
 // App uses: PRIVATE or BUSINESS
 define('APP_USE', "PRIVATE");
-// App context: CALENDAR or EVENTS
-define('APP_CONTEXT', "CALENDAR");
+// App context: EVENTS(0) or CALENDAR(1)
+define('APP_MODE', 0);
 define('APP_GUEST_MSG', "This is a private event list, please login");
 define('APP_WELCOME_MSG', "Welcome to your event list:");
 // Max signs from a single client
 define('APP_MAX_FROM_IP', 5);
 // Default Context: 'PRIVATE' or 'PUBLIC'
-define('APP_DEFAULT_CONTEXT', "PRIVATE");
+define('APP_DEFAULT_CONTEXT', "PUBLIC");
 
 define('DISPLAY_DATE_FONT', "Yuji Boku");
 define('DISPLAY_SUBMIT_BUTTON', "Log event");
@@ -86,14 +86,14 @@ $CONFIG = [
       'CUSTOM_HEADER' => "&nbsp;&nbsp;<a href='http://5mode.com'><img src='/ACT_res/5mode.png' style='width:950px;'></a>",
       // App use: PRIVATE or BUSINESS
       'USE' => "PRIVATE",
-      // App use: CALENDAR or EVENTS
-      'CONTEXT' => "SUPPORT",
+      // App use: EVENTS(0) or CALENDAR(1)
+      'MODE' => 0,
       'GUEST_MSG' => "This is a private event list, please login",
       'WELCOME_MSG' => "Welcome to your event list:",
       // Max signs from a single client
       'MAX_FROM_IP' =>  5,
       // Default Context: 'PRIVATE' or 'PUBLIC'
-      'DEFAULT_CONTEXT' => "PRIVATE"
+      'DEFAULT_CONTEXT' => "PUBLIC"
       ],
     
     'DISPLAY' => [

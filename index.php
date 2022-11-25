@@ -81,6 +81,8 @@
        continue;
      }
      
+     $mydesc = enableLinks($mydesc);	   
+	   
      // If I'm in admin
      if ($contextType === PERSONAL_CONTEXT_TYPE) {
        

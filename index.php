@@ -67,22 +67,22 @@
      
      $aFields = explode(PHP_PIPE, $val);
      if (APP_MODE == CALENDAR_MODE_TYPE) {
-       $mydate = $aFields[0]; 
-       $mytime = $aFields[1];
-       $mydesc = $aFields[2];
-       $myflag = $aFields[3];
+       $mydate = $aFields[0]??PHP_STR;
+       $mytime = $aFields[1]??PHP_STR;
+       $mydesc = $aFields[2]??PHP_STR;
+       $myflag = $aFields[3]??PHP_STR;
      } else {
-       $mydate = $aFields[0]; 
-       $mydesc = $aFields[1];
-       $myflag = $aFields[2];
+       $mydate = $aFields[0]??PHP_STR;
+       $mydesc = $aFields[1]??PHP_STR;
+       $myflag = $aFields[2]??PHP_STR;
      }
      
      if ($mydate==PHP_STR && $mydesc==PHP_STR) {
        continue;
      }
      
-     $mydesc = enableLinks($mydesc);	   
-	   
+     $mydesc = enableLinks($mydesc);
+     
      // If I'm in admin
      if ($contextType === PERSONAL_CONTEXT_TYPE) {
        
@@ -521,24 +521,34 @@
  $signHistory = file($curPath . DIRECTORY_SEPARATOR . ".HL_history");
  $captchaHistory = file($curPath . DIRECTORY_SEPARATOR . ".HL_captchahistory");
 
- $password = filter_input(INPUT_POST, "Password");
+ $password = filter_input(INPUT_POST, "Password")??"";
+ $password = strip_tags($password);
  if ($password==PHP_STR) {
-   $password = filter_input(INPUT_POST, "Password2");
+   $password = filter_input(INPUT_POST, "Password2")??"";
+   $password = strip_tags($password);
  }  
- $command = filter_input(INPUT_POST, "CommandLine");
+ $command = filter_input(INPUT_POST, "CommandLine")??"";
+ $command = strip_tags($command);
  
  //$pwd = filter_input(INPUT_POST, "pwd"); 
- $hideSplash = filter_input(INPUT_POST, "hideSplash");
- $hideHCSplash = filter_input(INPUT_POST, "hideHCSplash");
+ $hideSplash = filter_input(INPUT_POST, "hideSplash")??"";
+ $hideSplash = strip_tags($hideSplash);
+ $hideHCSplash = filter_input(INPUT_POST, "hideHCSplash")??"";
+ $hideHCSplash = strip_tags($hideHCSplash);
 
- $date = filter_input(INPUT_POST, "date");
- $hour = filter_input(INPUT_POST, "hour");
- $min = filter_input(INPUT_POST, "min");
- $desc = filter_input(INPUT_POST, "desc");
+ $date = filter_input(INPUT_POST, "date")??"";
+ $date = strip_tags($date);
+ $hour = filter_input(INPUT_POST, "hour")??"";
+ $hour = strip_tags($hour);
+ $min = filter_input(INPUT_POST, "min")??"";
+ $min = strip_tags($min);
+ $desc = filter_input(INPUT_POST, "desc")??"";
+ $desc = strip_tags($desc);
 
  $captchasign = hash("sha256", $_SERVER["REMOTE_ADDR"] . date("Y") . APP_SALT, false);
  
- $lastMessage = filter_input(INPUT_POST, "last_message");
+ $lastMessage = filter_input(INPUT_POST, "last_message")??"";
+ $lastMessage = strip_tags($lastMessage);
  $totsigns = count($signHistory);
  //print_r($totsigns);
  //exit(0);
@@ -546,7 +556,8 @@
    $lastMessage = hash("sha256", rtrim($signHistory[$totsigns-1],"\n") . APP_SALT, false);
  }   
 
- $captchacount = (int)filter_input(INPUT_POST, "captcha_count");
+ $captchacount = (int)filter_input(INPUT_POST, "captcha_count")??"";
+ $captchacount = strip_tags($captchacount);
  //if ($captchacount === 0) {
  //  $captchacount = 1;
  //}  

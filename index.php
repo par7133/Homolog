@@ -894,6 +894,10 @@
 </div>
 -->
 
+<?php if (file_exists(APP_PATH . DIRECTORY_SEPARATOR . "skinner.html")): ?>
+<?php include("skinner.html"); ?> 
+<?php endif; ?>
+
 <?php if (file_exists(APP_PATH . DIRECTORY_SEPARATOR . "metrics.html")): ?>
 <?php include("metrics.html"); ?> 
 <?php endif; ?>

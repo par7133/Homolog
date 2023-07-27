@@ -22,8 +22,8 @@ As you are going to run Homolog in the PHP process context, using a limited web 
 </ul>
 </ol>
    
-Hope you can enjoy it and let us know about any feedback: <a href="mailto:posta@elettronica.lol" style="color:#e6d236;">posta@elettronica.lol</a>
-  	   
 ### Screenshots  
 	   
  ![Homolog](/HL_res/screenshot1.png)  
+
+Feedback: <a href="mailto:posta@elettronica.lol" style="color:#e6d236;">posta@elettronica.lol</a>

@@ -82,7 +82,7 @@ function hideBurgerMenu() {
 
 function showSideBar() {
  if (!bSideBarVisible) {
-   $("#contentbar").css("width","100%");
+   $("#content-bar").css("width","100%");
    $("#sidebar").show("slow");
  }  
  bSideBarVisible = true; 
@@ -90,7 +90,7 @@ function showSideBar() {
 
 function closeSideBar() {
  $("#sidebar").hide();
- $("#contentbar").css("width","100%");
+ $("#content-bar").css("width","100%");
  bSideBarVisible = false; 
 }
 
@@ -155,7 +155,7 @@ function setContentPos() {
     //$("#contentbar").css("width","100%");
     $("#logo-hl").css("display","none");
   } else {  
-    $("#ahome").attr("href","http://homolog.5mode.com");
+    $("#ahome").attr("href","http://homolog.5mode-foss.eu");
     $("#agithub").css("display","inline");
     $("#afeedback").css("display","inline");
     $("#asupport").css("display","inline");  

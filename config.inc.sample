@@ -59,7 +59,6 @@ define('APP_DEFAULT_CONTEXT', "PUBLIC");
 
 define('DISPLAY_DATE_FONT', "Yuji Boku");
 define('DISPLAY_SUBMIT_BUTTON', "Log event");
-define('DISPLAY_BODY_CSS', "font-family: Monospace, Verdana, Serif;");
 
 define('CMDLINE_VALIDCMDS', "~|sign|del|conf|refresh|");
 
@@ -98,8 +97,7 @@ $CONFIG = [
     
     'DISPLAY' => [
       'NAME_FONT' => "Yuji Boku",
-      'SUBMIT_BUTTON' => "Log event",
-      'BODY_CSS' => "font-family: Monospace, Verdana, Serif;"
+      'SUBMIT_BUTTON' => "Log event"
       ],
      
     'CMDLINE' => [

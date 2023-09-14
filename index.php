@@ -55,6 +55,8 @@
    
    rsort($signHistoryCopy);
 
+   echo("<div id='events'>");
+   
    $m = 1;
    foreach($signHistoryCopy as $val) {
      
@@ -94,20 +96,21 @@
        }    
      
        // Display event/calendar list   
-       echo("<table style='width:75%; border:0;' align='center'>");
+       
+       echo("<table class='table-event' align='center'>");
        echo("<tr>");
-       echo("<td style='width:14%; text-align:left; vertical-align:top; padding-top:2px; padding-left:8px; white-space:nowrap;'>");
-       echo("<span style='font-family:".DISPLAY_DATE_FONT.";font-size:22px; font-weight:900;'>".$mydate."</span>");
+       echo("<td class='td-data-date'>");
+       echo("<span class='data-date' style='font-family:".DISPLAY_DATE_FONT.";'>".$mydate."</span>");
        echo("</td>");
        if (APP_MODE == CALENDAR_MODE_TYPE) {
-         echo("<td style='width:10%; text-align:left; vertical-align:top; padding-top:2px; padding-left:8px; white-space:nowrap;'>");
-         echo("<span style='font-family:".DISPLAY_DATE_FONT.";font-size:22px; font-weight:900;'>".$mytime."</span>");
+         echo("<td class='td-data-time'>");
+         echo("<span class='data-time' style='font-family:".DISPLAY_DATE_FONT.";'>".$mytime."</span>");
          echo("</td>");
        }
-       echo("<td style='width:66%; text-align:left; vertical-align:top; padding-top:5px; padding-left:15px; font-size:18px;'>");
-       echo($mydesc);
+       echo("<td class='td-data-desc'>");
+       echo("<span class='data-desc'>".$mydesc."</span>");
        echo("</td>");
-       echo("<td style='width:10%; text-align:center;padding-left:8px;padding-top:2px'>");
+       echo("<td class='td-admin'>");
        echo($adminFnc);
        echo("</td>");
        echo("</tr>");   
@@ -119,28 +122,29 @@
        if ($myflag !== "u") {
 
          // Display event list
-         echo("<table style='width:75%; border:0;' align='center'>");
+         echo("<table class='table-event' align='center'>");
          echo("<tr>");
-         echo("<td style='width:14%; text-align:left; vertical-align:top; padding-top:2px; padding-left:8px; white-space:nowrap;'>");
-         echo("<span style='font-family:".DISPLAY_DATE_FONT.";font-size:22px; font-weight:900;'>".$mydate."</span>");
+         echo("<td class='td-data-date'>");
+         echo("<span class='data-date' style='font-family:".DISPLAY_DATE_FONT.";'>".$mydate."</span>");
          echo("</td>");
          if (APP_MODE == CALENDAR_MODE_TYPE) {
-           echo("<td style='width10%; text-align:left; vertical-align:top; padding-top:2px; padding-left:8px; white-space:nowrap;'>");
-           echo("<span style='font-family:".DISPLAY_DATE_FONT.";font-size:22px; font-weight:900;'>".$mytime."</span>");
+           echo("<td class='td-data-time'>");
+           echo("<span class='data-time' style='font-family:".DISPLAY_DATE_FONT.";'>".$mytime."</span>");
            echo("</td>");
          }
-         echo("<td style='width:76%; text-align:left; vertical-align:top; padding-top:5px; padding-left:15px; font-size:18px;'>");
-         echo($mydesc);
+         echo("<td class='td-data-desc' style='width:76%;'>");
+         echo("<span class='data-desc'>".$mydesc."</span>");
          echo("</td>");
          echo("</tr>");   
          echo("</table>");
 
-         //echo("<span style='font-family:".DISPLAY_DATE_FONT.";font-size:38px;'>".$mydate."</span>,".PHP_SPACE.$mydesc."<br>"); 
        }  
      }
      
      $m++;
    }
+   
+   echo("</div>");
  }
 
  function updateHistory(&$update, $maxItems) {
@@ -672,16 +676,16 @@
 </style>
      
 </head>
-<body style="<?php echo(DISPLAY_BODY_CSS);?>">
+<body>
 
 <form id="frmHC" method="POST" action="/" target="_self" enctype="multipart/form-data">
 
 <?php if(APP_USE === "PRIVATE"): ?>
-<div class="header" style="background-color:#ffffff;z-index:90;">
+<div class="header">
    <a id="burger-menu" href="#" style="display:none;"><img src="/HL_res/burger-menu2.png" style="width:58px;"></a><a id="ahome" href="http://homolog.5mode-foss.eu" target="_blank" style="color:black; text-decoration: none;"><img id="logo-hmm" src="/HL_res/HLlogo.png" style="width:48px;">&nbsp;Homolog</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a id="agithub" href="https://github.com/par7133/Homolog" style="color:#000000"><span style="color:#119fe2">on</span> github</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a id="afeedback" href="mailto:posta@elettronica.lol" style="color:#000000"><span style="color:#119fe2">for</span> feedback</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a id="asupport" href="tel:+39-331-4029415" style="font-size:13px;background-color:#15c60b;border:2px solid #15c60b;color:black;height:27px;text-decoration:none;">&nbsp;&nbsp;get support&nbsp;&nbsp;</a><div id="pwd2" style="float:right;position:relative;top:+13px;display:none"><input type="password" id="Password2" name="Password2" placeholder="password" style="font-size:13px; background:#393939; color:#ffffff; width: 125px; border-radius:3px;" value="" autocomplete="off"></div>
 </div>
 <?php else: ?>
-<div class="header2" style="margin:0;padding:0;border-bottom:0px;text-align:center;">
+<div class="header2">
    <?php echo(APP_CUSTOM_HEADER); ?>
 </div>  
 <?php endif; ?>
@@ -695,24 +699,24 @@
   }    
 ?>
 
-<div id="call-sidebar" style="position:absolute; top:<?php echo($callSideBarTOP);?>px; left:1px; clear:both; float:left; width:1.5%; max-width:5px; height:100%; min-height:1900px; text-align:center; border-right: 1px solid #2c2f34;z-index:1;">
+<div id="call-sidebar" style="top:<?php echo($callSideBarTOP);?>px;">
     &nbsp;
 </div>
 
-<div id="sidebar" style="position:absolute; left:6px; top:0px; clear:both; background-color:#FFFFFF; padding:8px; width:25%; max-width:250px; height:100%; text-align:center; border-right: 1px solid #2c2f34; display:none;z-index:91;">
+<div id="sidebar">
     
-    <button type="button" class="close" aria-label="Close" onclick="closeSideBar();" style="position:relative; left:-10px;">
+    <button id="sidebar-close" type="button" class="close" aria-label="Close" onclick="closeSideBar();">
       <span aria-hidden="true">&times;</span>
     </button>
     
     <br><br>
-    <img src="/HL_res/HLgenius.png" alt="HL Genius" title="HL Genius" style="position:relative; left:+1px; width:90%; border: 1px dashed #EEEEEE;">
+    <img id="genius" src="/HL_res/HLgenius.png" alt="HL Genius" title="HL Genius">
     &nbsp;<br><br>
     <div style="text-align:left;white-space:nowrap;">
-    &nbsp;<input type="password" id="Password" name="Password" class="sidebarcontrol" placeholder="password" style="font-size:13px; width: 60%; border-radius:3px;" value="<?php echo($password);?>" autocomplete="off">&nbsp;<input type="submit" class="sidebarcontrol" value="<?php echo(getResource("Go", $curLocale));?>" style="width:24%; height: 25px;background-color:lightgray;color:#000000;"><br>
-    &nbsp;<input type="text" id="Salt" class="sidebarcontrol" placeholder="salt" style="position:relative; top:+5px; font-size:13px; width: 90%; border-radius:3px;" autocomplete="off"><br>
+    &nbsp;<input id="Password" name="Password" class="sidebarcontrol" type="password" placeholder="password" value="<?php echo($password);?>" autocomplete="off">&nbsp;<input type="submit" class="sidebarcontrol" value="<?php echo(getResource("Go", $curLocale));?>" style="width:24%; height: 25px;background-color:lightgray;color:#000000;"><br>
+    &nbsp;<input id="Salt"  class="sidebarcontrol" type="text" placeholder="salt" autocomplete="off"><br>
     <div style="text-align:center;">
-    <a href="#" onclick="showEncodedPassword();" style="position:relative; left:-2px; top:+5px; color:#000000; font-size:12px;"><?php echo(getResource("Hash Me", $curLocale));?>!</a>     
+    <a id="butHashMe" href="#" onclick="showEncodedPassword();"><?php echo(getResource("Hash Me", $curLocale));?>!</a>     
     
     <br><br><br>
 
@@ -720,15 +724,15 @@
     </div>
 </div>
 
-<div id="contentbar" style="width:100%;float:left;">
+<div id="content-bar">
 
 	<?php if (APP_SPLASH): ?>
 	<?php if ($hideSplash !== PHP_STR): ?>
-	<div id="splash" style="color:black; border-radius:20px; position:relative; left:+3px; width:98%; background-color: #33aced; padding: 20px; margin-bottom:8px;">	
+	<div id="splash">	
 	
-	   <button type="button" class="close" aria-label="Close" onclick="closeSplash();" style="position:relative; left:-10px;">
-        <span aria-hidden="true">&times;</span>
-     </button>
+	  <button id="butCloseSplash" type="button" class="close" aria-label="Close" onclick="closeSplash();">
+           <span aria-hidden="true">&times;</span>
+        </button>
 	
 	   Hello and welcome to Homolog!<br><br>
 	   
@@ -754,7 +758,7 @@
 	   
 	   <br>	
      
-	   Hope you can enjoy it and let us know about any feedback: <a href="mailto:info@homolog.org" style="color:#e6d236;">info@homolog.org</a>
+	   Hope you can enjoy it and let us know about any feedback: <a href="mailto:posta@elettronica.lol" style="color:#e6d236;">posta@elettronica.lol</a>
 	   
 	</div>	
 	<?php endif; ?>
@@ -766,45 +770,49 @@
   
     <?php if (APP_DEFAULT_CONTEXT === "PRIVATE"): ?>
      
+     <div id="content-header">
+    
       <?php if ($contextType === PUBLIC_CONTEXT_TYPE): ?>
      
-        <div style="padding:30px; font-size:23px;margin-bottom:23px;font-weight:900;"><h1><?php echo(APP_GUEST_MSG??"&nbsp;"); ?></h1></div>
+        <div id="guest-msg"><h1><?php echo(APP_GUEST_MSG??"&nbsp;"); ?></h1></div>
       
       <?php else: ?>
       
-        <div style="font-size:23px;margin-bottom:23px;font-weight:900;"><h1><?php echo(APP_WELCOME_MSG??"&nbsp;"); ?></h1></div>
+        <div id="welcome-msg"><h1><?php echo(APP_WELCOME_MSG??"&nbsp;"); ?></h1></div>
         
         <br>
         
         <?PHP if (APP_MODE == EVENTS_MODE_TYPE): ?>
         
-        <input type="text" id="date" name="date" class="standardcontrol" placeholder="Date" value="<?php echo(date("Y-m-d"));?>" style="min-width:170px;max-width:250px;width:25%;">&nbsp;<input type="text" id="desc" name="desc" class="standardfield" placeholder="Description" style="width:55%;max-width:630px;" maxlength="300"><br>
+        <input id="date" name="date" type="text" class="standardcontrol" placeholder="Date" value="<?php echo(date("Y-m-d"));?>">&nbsp;<input id="desc" name="desc" type="text" class="standardfield" placeholder="Description" maxlength="300"><br>
         
-        <input type="button" id="send" name="send" value="&nbsp;<?php echo(DISPLAY_SUBMIT_BUTTON);?>&nbsp;" title="<?php echo(DISPLAY_SUBMIT_BUTTON);?>" style="position:relative;top:+28px;margin-top:25px;height:50px;background-color:red;border:1px solid black;color:white;font-size:medium;">
+        <input id="send" name="send" type="button" value="&nbsp;<?php echo(DISPLAY_SUBMIT_BUTTON);?>&nbsp;" title="<?php echo(DISPLAY_SUBMIT_BUTTON);?>">
         
         <?PHP else: ?>
         
-        <input type="text" id="date" name="date" class="standardfield standardcontrol" placeholder="Date" value="<?php echo(date("Y-m-d"));?>" style="min-width:100px;max-width:170px;width:20%;">&nbsp;
-        <select id="hour" name="hour" class="standardfield standardcontrol" style="background-color:#FFFFFF;">
+        <input id="date" name="date" type="text" class="standardfield standardcontrol" placeholder="Date" value="<?php echo(date("Y-m-d"));?>" style="min-width:100px;max-width:170px;width:20%;">&nbsp;
+        <select id="hour" name="hour" class="standardfield standardcontrol">
         <?PHP for($i=0;$i<=24;$i++):?>
           <option value="<?PHP echo($i);?>" <?PHP echo(($i==date("G"))?"selected":"")?>><?PHP echo((strlen($i)===1)?"0".$i:$i);?></option>
         <?PHP endfor; ?>
-        </select>:<select id="min" name="min" class="standardfield standardcontrol" style="background-color:#FFFFFF;">
+        </select>:<select id="min" name="min" class="standardfield standardcontrol">
         <?PHP for($i=0;$i<=59;$i++):?>
           <option value="<?PHP echo($i);?>" <?PHP echo(($i==ltrim(date("i"),'0'))?"selected":"");?>><?PHP echo((strlen($i)===1)?"0".$i:$i);?></option>
         <?PHP endfor; ?>
         </select>&nbsp;
-        <input type="text" id="desc" name="desc" class="standardfield standardcontrol" placeholder="Description" style="width:45%;max-width:530px;" maxlength="300"><br>
+        <input id="desc" name="desc" type="text"  class="standardfield standardcontrol" placeholder="Description" maxlength="300" style="width:45%;max-width:530px;"><br>
         
-        <input type="button" id="send" name="send" value="&nbsp;<?php echo(DISPLAY_SUBMIT_BUTTON);?>&nbsp;" title="<?php echo(DISPLAY_SUBMIT_BUTTON);?>" style="position:relative;top:+28px;margin-top:25px;height:50px;background-color:red;border:1px solid black;color:white;font-size:medium;">
+        <input id="send" name="send" type="text"  value="&nbsp;<?php echo(DISPLAY_SUBMIT_BUTTON);?>&nbsp;" title="<?php echo(DISPLAY_SUBMIT_BUTTON);?>">
         
         <?PHP Endif; ?>
         
-        <br><br>
+        <div style="clear:both;margin:auto;"><br><br></div>
         
-        <hr style="color:black; margin-top:30px;">
+        <hr>
         
         <br>
+        
+        </div>
         
         <?php showHistory(); ?>
    
@@ -812,13 +820,15 @@
     
     <?php else: ?>
     
+      <div id="content-header">  
+        
       <?php if ($contextType === PUBLIC_CONTEXT_TYPE): ?>
     
-        <div style="font-size:23px;margin-bottom:23px;font-weight:900;"><h1><?php echo(APP_WELCOME_MSG??"&nbsp;"); ?></h1></div>
+        <div id="welcome-msg"><h1><?php echo(APP_WELCOME_MSG??"&nbsp;"); ?></h1></div>
         
         <br>
         
-        <hr style="color:black; margin-top:30px;">
+        <hr>
 
         <br>
         
@@ -826,40 +836,41 @@
         
       <?php else: ?>
 
-        <div style="font-size:23px;margin-bottom:23px;font-weight:900;"><h1><?php echo(APP_WELCOME_MSG??"&nbsp;"); ?></h1></div>
+        <div id="welcome-msg"><h1><?php echo(APP_WELCOME_MSG??"&nbsp;"); ?></h1></div>
         
         <br>
 
         <?PHP if (APP_MODE == EVENTS_MODE_TYPE): ?>
         
-        <input type="text" id="date" name="date" class="standardcontrol" placeholder="Date" value="<?php echo(date("Y-m-d"));?>" style="min-width:170px;max-width:250px;width:25%;">&nbsp;<input type="text" id="desc" name="desc" class="standardcontrol" placeholder="Description" style="width:55%;max-width:630px;" maxlength="300"><br>
+        <input id="date" name="date" type="text" class="standardcontrol" placeholder="Date" value="<?php echo(date("Y-m-d"));?>">&nbsp;<input id="desc" name="desc" type="text" class="standardcontrol" placeholder="Description" maxlength="300"><br>
         
-        <input type="button" id="send" name="send" value="&nbsp;<?php echo(DISPLAY_SUBMIT_BUTTON);?>&nbsp;" title="<?php echo(DISPLAY_SUBMIT_BUTTON);?>" style="position:relative;top:+28px;margin-top:25px;height:50px;background-color:red;border:1px solid black;color:white;font-size:medium;">
+        <input id="send" name="send" type="button" value="&nbsp;<?php echo(DISPLAY_SUBMIT_BUTTON);?>&nbsp;" title="<?php echo(DISPLAY_SUBMIT_BUTTON);?>">
 
         <?PHP else: ?>
         
-        <input type="text" id="date" name="date" class="standardfield standardcontrol" placeholder="Date" value="<?php echo(date("Y-m-d"));?>" style="min-width:100px;max-width:170px;width:20%;">&nbsp;
+        <input id="date" name="date" type="text" class="standardfield standardcontrol" placeholder="Date" value="<?php echo(date("Y-m-d"));?>" style="min-width:100px;max-width:170px;width:20%;">&nbsp;
         <select id="hour" name="hour" class="standardfield standardcontrol" style="background-color:#FFFFFF;">
         <?PHP for($i=0;$i<=24;$i++):?>
           <option value="<?PHP echo($i);?>" <?PHP echo(($i==date("G"))?"selected":"")?>><?PHP echo((strlen($i)===1)?"0".$i:$i);?></option>
         <?PHP endfor; ?>
-        </select>:<select id="min" name="min" class="standardfield standardcontrol" style="background-color:#FFFFFF;">
+        </select>:<select id="min" name="min" class="standardfield standardcontrol">
         <?PHP for($i=0;$i<=59;$i++):?>
           <option value="<?PHP echo($i);?>" <?PHP echo(($i==ltrim(date("i"),'0'))?"selected":"")?>><?PHP echo((strlen($i)===1)?"0".$i:$i);?></option>
         <?PHP endfor; ?>
         </select> &nbsp;
-        <input type="text" id="desc" name="desc" class="standardfield standardcontrol" placeholder="Description" style="width:45%;max-width:530px;" maxlength="300"><br>
+        <input id="desc" name="desc" type="text" class="standardfield standardcontrol" placeholder="Description" style="width:45%;max-width:530px;" maxlength="300"><br>
         
-        <input type="button" id="send" name="send" value="&nbsp;<?php echo(DISPLAY_SUBMIT_BUTTON);?>&nbsp;" title="<?php echo(DISPLAY_SUBMIT_BUTTON);?>" style="position:relative;top:+28px;margin-top:25px;height:50px;background-color:red;border:1px solid black;color:white;font-size:medium;">
+        <input id="send" name="send" type="button" value="&nbsp;<?php echo(DISPLAY_SUBMIT_BUTTON);?>&nbsp;" title="<?php echo(DISPLAY_SUBMIT_BUTTON);?>">
         
         <?PHP Endif; ?>
 
+       <div style="clear:both;margin:auto;"><br><br></div>
         
-        <br><br>
-        
-        <hr style="color:black; margin-top:30px;">
+        <hr>
         
         <br>
+        
+        </div>
         
         <?php showHistory(); ?>
 
@@ -870,8 +881,8 @@
     <br><br><br>
 
     <?php if(APP_USE === "BUSINESS"): ?>    
-    <div style="font-size:23px">
-      <a id="ahome" href="http://homolog.5mode-foss.eu" target="_blank" style="color:black;"><img id="logo-hl" src="/HL_res/HLlogo.png" style="position:relative;top:-25px;width:48px;margin:5px;">Powered by Homolog</a>
+    <div id="footer2">
+      <a id="ahome" href="http://homolog.5mode-foss.eu" target="_blank" style="color:black;"><img id="logo-hl" src="/HL_res/HLlogo.png">Powered by Homolog</a>
     </div>
     <?php endif; ?>&nbsp;
        

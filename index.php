@@ -634,7 +634,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   
 <!--
-    Copyright 2021, 2024 5 Mode
+    Copyright 2021, 2028 NuMode
 
     This file is part of Homolog.
 
@@ -659,7 +659,7 @@
     
   <meta name="description" content="<?php echo(APP_DESCRIPTION); ?>"/>
   <meta name="keywords" content="<?php echo(APP_KEYWORDS); ?>"/>
-  <meta name="author" content="5 Mode"/> 
+  <meta name="author" content="NuMode"/> 
   <meta name="robots" content="index,follow"/>
   
   <script src="/HL_js/jquery-3.6.0.min.js" type="text/javascript"></script>
@@ -686,7 +686,7 @@
 
 <?php if(APP_USE === "PRIVATE"): ?>
 <div class="header">
-   <a id="burger-menu" href="#" style="display:none;"><img src="/HL_res/burger-menu2.png" style="width:58px;"></a><a id="ahome" href="http://homolog.5mode-foss.eu" target="_blank" style="color:black; text-decoration: none;"><img id="logo-hmm" src="/HL_res/HLlogo.png" style="width:48px;">&nbsp;Homolog</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a id="agithub" href="https://github.com/par7133/Homolog" style="color:#000000"><span style="color:#119fe2">on</span> github</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a id="afeedback" href="mailto:code@gaox.io" style="color:#000000"><span style="color:#119fe2">for</span> feedback</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a id="asupport" href="tel:+39-378-0812391" style="font-size:13px;background-color:#15c60b;border:2px solid #15c60b;color:black;height:27px;text-decoration:none;">&nbsp;&nbsp;get support&nbsp;&nbsp;</a><div id="pwd2" style="float:right;position:relative;top:+13px;display:none"><input type="password" id="Password2" name="Password2" placeholder="password" style="font-size:13px; background:#393939; color:#ffffff; width: 125px; border-radius:3px;" value="" autocomplete="off"></div>
+   <a id="burger-menu" href="#" style="display:none;"><img src="/HL_res/burger-menu2.png" style="width:58px;"></a><a id="ahome" href="http://homolog.numode-foss.eu" target="_blank" style="color:black; text-decoration: none;"><img id="logo-hmm" src="/HL_res/HLlogo.png" style="width:48px;">&nbsp;Homolog</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a id="agithub" href="https://github.com/par7133/Homolog" style="color:#000000"><span style="color:#119fe2">on</span> github</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a id="afeedback" href="mailto:code@gaox.io" style="color:#000000"><span style="color:#119fe2">for</span> feedback</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a id="asupport" href="tel:+39-378-0812391" style="font-size:13px;background-color:#15c60b;border:2px solid #15c60b;color:black;height:27px;text-decoration:none;">&nbsp;&nbsp;get support&nbsp;&nbsp;</a><div id="pwd2" style="float:right;position:relative;top:+13px;display:none"><input type="password" id="Password2" name="Password2" placeholder="password" style="font-size:13px; background:#393939; color:#ffffff; width: 125px; border-radius:3px;" value="" autocomplete="off"></div>
 </div>
 <?php else: ?>
 <div class="header2">
@@ -886,7 +886,7 @@
 
     <?php if(APP_USE === "BUSINESS"): ?>    
     <div id="footer2">
-      <a id="ahome" href="http://homolog.5mode-foss.eu" target="_blank" style="color:black;"><img id="logo-hl" src="/HL_res/HLlogo.png">Powered by Homolog</a>
+      <a id="ahome" href="http://homolog.numode-foss.eu" target="_blank" style="color:black;"><img id="logo-hl" src="/HL_res/HLlogo.png">Powered by Homolog</a>
     </div>
     <?php endif; ?>&nbsp;
        
